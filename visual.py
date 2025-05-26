@@ -42,17 +42,17 @@ if page == "📦 Produksi":
     # Membuat metrik rata-rata
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        avg_rakyat = kebun_total['produktivitas_rakyat'].mean()
-        st.metric("Rata-Rata Produktivitas Rakyat", f"{avg_rakyat:.2f}")
+        avg_rakyat = kebun_total['produktivitas_rakyat'].mean() 
+        st.metric("Rata-Rata Produktivitas Rakyat (kg/ha)", f"{avg_rakyat:.2f}")
     with col2:
         avg_swasta = kebun_total['produktivitas_swasta'].mean()
-        st.metric("Rata-Rata Produktivitas Swasta", f"{avg_swasta:.2f}")
+        st.metric("Rata-Rata Produktivitas Swasta (kg/ha)", f"{avg_swasta:.2f}")
     with col3:
         avg_prod_rakyat = kebun_total['produksi_rakyat'].mean()
-        st.metric("Rata-Rata Produksi Rakyat", f"{avg_prod_rakyat:.2f}")
+        st.metric("Rata-Rata Produksi Rakyat (ton)", f"{avg_prod_rakyat:.2f}")
     with col4:
         avg_prod_swasta = kebun_total['produksi_swasta'].mean()
-        st.metric("Rata-Rata Produksi Swasta", f"{avg_prod_swasta:.2f}")
+        st.metric("Rata-Rata Produksi Swasta (ton)", f"{avg_prod_swasta:.2f}")
 
     # Pilih tahun dari dropdown di sidebar
     selected_year = st.selectbox("Pilih Tahun", sorted(kebun_total['tahun'].unique()))
@@ -117,7 +117,7 @@ if page == "📦 Produksi":
     st.plotly_chart(fig2, use_container_width=True)
 
     # Pilihan tahun
-    st.subheader("Perbandingan Produksi antar Kabupaten dan Kota Berdasarkan Tahun")
+    st.subheader("Perbandingan Produksi antar Kabupaten atau Kota Berdasarkan Tahun")
     tahun_pilihan = st.selectbox("Pilih Tahun:", ["Semua Tahun"] + sorted(kebun_total['tahun'].unique()))
 
     # Filter data sesuai pilihan
@@ -240,6 +240,7 @@ elif page == "📈 Tren Produktivitas":
     fig.update_layout(xaxis_tickangle=-45)
     st.plotly_chart(fig, use_container_width=True)
 
+
 # Halaman 3 - Perbandingan Rakyat dan Swasta
 elif page == "🔍 Perbandingan Rakyat dan Swasta":
     st.header("Perbandingan Produktivitas Sektor Rakyat dan Swasta")
@@ -292,13 +293,13 @@ elif page == "📋 Klasterisasi":
         y='produktivitas_swasta', 
         color='cluster_produktivitas', 
         title='Cluster Scatter Plot',
-         hover_data=['kab_kota', 'tahun', 'cluster_produktivitas'],
+        hover_data=['kab_kota', 'tahun', 'cluster_produktivitas'],
         color_continuous_scale='viridis')
     st.plotly_chart(fig9, use_container_width=True)
     fig9.update_traces(textposition='top center', textfont_size=9)
 
     # Pie Chart Distribusi Kluster
-    st.subheader("Distribusi Kluster Tahun 2017 - 2024")
+    st.subheader("Distribusi Jumlah Data per Kluster Tahun 2017 - 2024")
     cluster_count = kebun_total['cluster_produktivitas'].value_counts().reset_index()
     cluster_count.columns = ['cluster_produktivitas', 'jumlah']
     fig10 = px.pie(cluster_count, names='cluster_produktivitas', values='jumlah')
@@ -378,7 +379,7 @@ elif page == "🗺 Peta Geografis":
         hover_data={
             "produksi_rakyat": True,
             "produksi_swasta": True,
-            "produktivitas_rakyat": True,
+            "produktivitas_swasta": True,
             "latitude": False,
             "longitude": False
         },
