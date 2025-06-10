@@ -1,4 +1,5 @@
 📊 Visualisasi Data Sektor Perkebunan Teh di Indonesia
+
 Proyek ini dibuat untuk memvisualisasikan data sektor perkebunan teh di Indonesia. Visualisasi mencakup perbandingan produksi rakyat dan swasta, tren produktivitas, serta analisis klaster menggunakan metode K-Means. Proyek ini disusun sebagai bagian dari Penelitian Ilmiah Semester 6 Tahun 2025.
 
 📌 Tujuan Proyek
