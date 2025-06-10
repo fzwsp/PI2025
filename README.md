@@ -7,5 +7,7 @@ Proyek ini dibuat untuk memvisualisasikan data sektor perkebunan teh di Indonesi
 3. Menyajikan hasil analisis dalam bentuk visual yang informatif
 
 📝 Catatan
+
 ++ Dataset yang digunakan bersumber dari Open Data Jabar.
+
 ++ Data telah dibersihkan dan diproses terlebih dahulu sebelum divisualisasikan.
